@@ -62,7 +62,7 @@ $ php -r "readfile('https://getcomposer.org/installer');" | php
 Then, generate a new project of the Application Skeleton with `create-project` command:
 
 ```
-  php composer.phar create-project rindow/skeleton-standard-application path/to/install
+  php composer.phar create-project rindow/skeleton-fullfeatures-demo path/to/install
 ```
 
 Composer will install Rindow Web Application Skeleton and components that depend on it under path/to/install directory.
@@ -71,7 +71,7 @@ Composer will install Rindow Web Application Skeleton and components that depend
 Also you can download it directly from github.
 
 ```
-  $ git clone https://github.com/rindow/skeleton-standard-application path/to/install
+  $ git clone https://github.com/rindow/skeleton-fullfeatures-demo path/to/install
   $ cd path/to/install
   $ composer update
 ```
