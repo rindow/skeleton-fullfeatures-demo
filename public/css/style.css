@@ -1,0 +1,46 @@
+
+
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+.navbar {
+	margin-bottom: 0;
+}
+.icon-bar {
+	background:#428bca;
+}
+.hero-unit {
+	background: #ab4dff; /* Old browsers */
+	background-image: -moz-linear-gradient(top,  #debaff 0%, #ab4dff 50%, #898c90 100%); /* FF3.6+ */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#debaff), color-stop(50%,#ab4dff), color-stop(100%,#ab4dff)); /* Chrome,Safari4+ */
+	background-image: -webkit-linear-gradient(top,  #debaff 0%, #ab4dff 50%,#898c90 100%); /* Chrome10+,Safari5.1+ */
+	background-image: -o-linear-gradient(top,  #debaff 0%, #ab4dff 50%,#898c90 100%); /* Opera 11.10+ */
+	background-image: -ms-linear-gradient(top,  #debaff 0%, #ab4dff 50%,#898c90 100%); /* IE10+ */
+	background-image: linear-gradient(to bottom, #debaff 0%, #bc71ff 50%, #bc71ff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a4a4a', endColorstr='#898c90',GradientType=0 ); /* IE6-9 */
+}
+.hero-unit h1 {
+	font-size: 36px;
+	line-height: 1;
+	color: #ffffff;
+	text-shadow: 0 1px 0 rgba(0,0,0,.2);
+}
+.hero-unit p {
+	line-height: 1;
+	color: #ffffff;
+	text-shadow: 0 1px 0 rgba(0,0,0,.2);
+}
+.gradient {
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px; /* future proofing */
+	-khtml-border-radius: 8px; /* for old Konqueror browsers */
+	padding: 0 0 0 0;
+}
+.btn-color {
+	color: #fff;
+}
+.btn-color:hover, .btn-color:focus {
+	color: #fff;
+}

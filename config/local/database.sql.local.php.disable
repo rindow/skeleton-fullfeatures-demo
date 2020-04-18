@@ -1,0 +1,41 @@
+<?php
+return [
+    'module_manager' => [
+        'modules' => [
+            Rindow\Database\Dao\Sql\Module::class => true,
+            Rindow\Database\Pdo\LocalTxModule::class => true,
+            Rindow\Module\Mongodb\LocalTxModule::class => false,
+            Rindow\Module\Google\Cloud\LocalTxModule::class => false,
+        ],
+    ],
+    'database' => [
+        'connections' => [
+            'default' => [
+                'dsn' => 'sqlite:'.__DIR__.'/../../data/db.sqlite',
+            ],
+            'sqlite' => [
+                'dsn' => 'sqlite:'.__DIR__.'/../../data/db.sqlite',
+            ],
+            'mysql' => [
+                'dsn' => "mysql:host=127.0.0.1;dbname=databasename",
+                'user'   => 'dbuser',
+                'password' => 'dbpassword',
+            ],
+            'pgsql' => [
+                'dsn' => "pgsql:host=localhost;dbname=databasename",
+                'user'     => "dbuser",
+                'password' => "dbpassword",
+            ]
+        ],
+    ],
+    'container' => [
+        'aliases' => [
+            'Acme\\MyApp\\DefaultDataSource' => 'Rindow\\Database\\Pdo\\Transaction\\DefaultDataSource',
+            'Acme\\MyApp\\Repository\\ProductRepository'  => 'Acme\\MyApp\\Repository\\Sql\\ProductSqlRepository',
+            'Acme\\MyApp\\Repository\\CategoryRepository' => 'Acme\\MyApp\\Repository\\Sql\\CategorySqlRepository',
+            Acme\MyApp\Repository\SchemaManager::class => Acme\MyApp\Repository\Sql\SchemaManager::class,
+            // user manager
+            'Rindow\\Security\\Core\\Authentication\\DefaultUserDetailsRepository' => 'Rindow\\Security\\Core\\Authentication\\DefaultUserDetailsSqlRepository',
+        ],
+    ],
+];

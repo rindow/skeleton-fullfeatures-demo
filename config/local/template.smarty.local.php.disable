@@ -1,0 +1,15 @@
+<?php
+return [
+    'module_manager' => [
+        'modules' => [
+            Rindow\Web\View\Module::class      => false,
+            Rindow\Module\Twig\Module::class   => false,
+            Rindow\Module\Smarty\Module::class => true,
+        ],
+    ],
+    'smarty' => [
+        //'caching' => Smarty::CACHING_LIFETIME_SAVED,
+        //'caching' => Smarty::CACHING_LIFETIME_CURRENT,
+        //'cache_lifetime' => 3600,
+    ],
+];

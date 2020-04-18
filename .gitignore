@@ -1,0 +1,9 @@
+cache/
+data/*.sqlite
+vendor/
+*.log
+composer.lock
+composer.phar
+*.sqlite
+.phpunit.result.cache
+config/local/security.secret.local.php

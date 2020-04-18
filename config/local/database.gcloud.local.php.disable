@@ -1,0 +1,36 @@
+<?php
+## You have to manually add the following to webapp.config.php.
+##
+## 'module_manager' => [
+##      'configCacheFactoryClass'=>'Rindow\\Module\\Google\\Cloud\\System\\ServiceFactory',
+## ]
+##
+
+return [
+    'module_manager' => [
+        'modules' => [
+            Rindow\Database\Dao\Sql\Module::class => false,
+            Rindow\Database\Pdo\LocalTxModule::class => false,
+            Rindow\Module\Mongodb\LocalTxModule::class => false,
+            Rindow\Module\Google\Cloud\LocalTxModule::class => true,
+        ],
+    ],
+    'acme' => [
+        'myapp' => [
+            'collections' => [
+                'colors'     => false,
+            ]
+        ]
+    ],
+
+    'container' => [
+        'aliases' => [
+            'Acme\\MyApp\\DefaultDataSource' => 'Rindow\\Module\\Google\\Cloud\\Transaction\\DefaultDataSource',
+            'Acme\\MyApp\\Repository\\ProductRepository'  => 'Acme\\MyApp\\Repository\\Google\\Cloud\\ProductRepository',
+            'Acme\\MyApp\\Repository\\CategoryRepository' => 'Acme\\MyApp\\Repository\\Google\\Cloud\\CategoryRepository',
+            Acme\MyApp\Repository\SchemaManager::class => null,
+            // user manager
+            'Rindow\\Security\\Core\\Authentication\\DefaultUserDetailsRepository' => 'Acme\\MyApp\\Repository\\Google\\Cloud\\DefaultUserDetailsGoogleCloudRepository',
+        ],
+    ],
+];

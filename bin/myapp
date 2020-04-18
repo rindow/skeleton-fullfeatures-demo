@@ -1,0 +1,7 @@
+#!/usr/bin/env php
+<?php
+include __DIR__.'/../init_autoloader.php';
+
+$config = require __DIR__.'/../config/webapp.config.php';
+$exit = Rindow\Console\Command\Launcher::run($config,'Acme\\MyApp',$argv);
+exit($exit);

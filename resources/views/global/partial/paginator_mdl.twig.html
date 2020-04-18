@@ -1,0 +1,26 @@
+{% macro rendering(paginator, route, query, max= 5, scrolling = 'jumping', range = 5) %}
+{% set dummy = paginator.setItemMaxPerPage(max) %}
+{% set dummy = paginator.setPageScrollingStyle(scrolling) %}
+{% set dummy = paginator.setPageRangeSize(range) %}
+<div class="mdl-grid">
+<div style="margin-left:auto">
+{% for page in paginator.getPagesInRange() %}
+    <a href="{{ url( route, {},{ query: query | merge({ page: page }) } ) }}" style="text-decoration:none;{% if paginator.getPage() == page %} pointer-events: none;{% endif %}"{% if paginator.getPage() == page %} disabled{% endif %}>
+	<button class="mdl-button mdl-js-button mdl-button--icon"{% if paginator.getPage() == page %} disabled{% endif %}>
+		{{ page }}
+    </button>
+    </a>
+{% endfor %}
+    <a href="{{ url( route, {},{ query: query | merge({ page: paginator.getPreviousPage() }) } ) }}" style="text-decoration:none;{% if not paginator.hasPreviousPage() %} pointer-events: none;{% endif %}"{% if not paginator.hasPreviousPage() %} disabled{% endif %}>
+	<button class="mdl-button mdl-js-button mdl-button--icon"{% if not paginator.hasPreviousPage() %} disabled{% endif %}>
+	    <i class="material-icons">navigate_before</i>
+    </button>
+	</a>
+    <a href="{{ url( route, {}, { query: query | merge({ page: paginator.getNextPage() }) } ) }}" style="text-decoration:none;{% if not paginator.hasNextPage() %} pointer-events: none;{% endif %}"{% if not paginator.hasNextPage() %} disabled{% endif %}>
+	<button class="mdl-button mdl-js-button mdl-button--icon"{% if not paginator.hasNextPage() %} disabled{% endif %}>
+	    <i class="material-icons">navigate_next</i>
+	</button>
+    </a>
+</div>
+</div>
+{% endmacro %}

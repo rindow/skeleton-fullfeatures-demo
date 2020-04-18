@@ -1,0 +1,37 @@
+<?php
+return [
+    'module_manager' => [
+        'modules' => [
+            Rindow\Database\Dao\Sql\Module::class => false,
+            Rindow\Database\Pdo\LocalTxModule::class => false,
+            Rindow\Module\Mongodb\LocalTxModule::class => true,
+            Rindow\Module\Google\Cloud\LocalTxModule::class => false,
+        ],
+    ],
+    'database' => [
+        'connections' => [
+            'mongodb' => [
+                'database' => 'test',
+            ],
+        ],
+    ],
+    'acme' => [
+        'myapp' => [
+            'collections' => [
+                'colors'     => false,
+                'rindow_authorities' => false,
+            ]
+        ]
+    ],
+
+    'container' => [
+        'aliases' => [
+            'Acme\\MyApp\\DefaultDataSource' => 'Rindow\\Module\\Mongodb\\Transaction\\DefaultDataSource',
+            'Acme\\MyApp\\Repository\\ProductRepository'  => 'Acme\\MyApp\\Repository\\Mongodb\\ProductRepository',
+            'Acme\\MyApp\\Repository\\CategoryRepository' => 'Acme\\MyApp\\Repository\\Mongodb\\CategoryRepository',
+            Acme\MyApp\Repository\SchemaManager::class => Acme\MyApp\Repository\Mongodb\SchemaManager::class,
+            // user manager
+            'Rindow\\Security\\Core\\Authentication\\DefaultUserDetailsRepository' => 'Acme\\MyApp\\Repository\\Mongodb\\DefaultUserDetailsMongodbRepository',
+        ],
+    ],
+];

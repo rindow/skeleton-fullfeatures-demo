@@ -1,0 +1,34 @@
+{% extends layout %}
+
+{% block title %}Forbidden{% endblock %}
+
+{% block body %}
+<div class="container grid-container mdl-layout__content">
+<div class="row grid-x mdl-grid">
+<div class="col-sm-12 columns cell small-12 mdl-cell mdl-cell--12-col">
+<h1>Forbidden</h1>
+{% if policy['display_detail'] %}
+<p>Exception: {{ exception }}</p>
+<p>Code: {{ code }}</p>
+<p>Message: {{ message }}</p>
+<hr>
+{% for dataTable in dataTables %}
+<h3>{{ dataTable.label }}</h3>
+<dl>
+{% for name,value in dataTable.data %}
+<dt>{{ name }}</dt>
+<dd>{{ value }}</dd>
+{% endfor %}
+</dl>
+{% endfor %}
+<hr>
+<p>Source: {{ file }}({{ line }})</p>
+<p>Trace:</p>
+<pre>
+{{ trace }}
+</pre>
+{% endif %}
+</div>
+</div><!--class="row"-->
+</div><!--class="container"-->
+{% endblock %}

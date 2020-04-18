@@ -1,0 +1,36 @@
+{% extends layout %}
+
+{% block title %}Protected Page{% endblock %}
+
+{% block body %}
+<div class="container grid-container mdl-layout__content">
+<div class="row grid-x mdl-grid">
+<div class="col-sm-2 columns cell small-12 medium-2 large-2 mdl-cell mdl-cell--2-col">
+  {{ include('partial/nav.twig.html', { title: 'Protected Demo', nav: [
+    { caption: 'Public', route: route.publicpage },
+    { caption: 'Protected', route: route.protectedpage },
+    { caption: 'Fully Auth', route: route.fullauthpage },
+    { caption: 'Form',  route: route.product },
+    { caption: 'Api Demo', route: route.apidemo },
+  ], current: route.fullauthpage }) }}
+</div>
+<div class="col-sm-10 columns cell small-12 medium-10 large-10 mdl-cell mdl-cell--10-col">
+<aside>
+  <div>{{ include('partial/alertbox.twig.html', { messages: flashMessages.get('notice') }) }}</div>
+</aside>
+<h1>Public/Protected Page demo</h1>
+<h3>Only fully authenticated users can access this page.</h3>
+<p>
+This page requires re-authentication for login with "remember-me".
+However, you can access it within the session expiration date.
+</p>
+<p>
+Hello {{ username }}!
+</p>
+<p>
+    <a class="button secondary tiny radius btn btn-sm btn-default mdl-button mdl-js-button mdl-button--raised" href="{{ logout }}">Logout</a>
+</p>
+</div>
+</div>
+</div><!--class="container"-->
+{% endblock %}

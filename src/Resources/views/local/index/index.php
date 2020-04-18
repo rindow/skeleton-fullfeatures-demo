@@ -1,0 +1,76 @@
+<?php $this->placeholder()->set('title','Rindow Web Application Skeleton') ?>
+<div class="container grid-container mdl-layout__content">
+<div class="row grid-x mdl-grid">
+<div class="col-sm-12 columns cell small-12 medium-12 large-12 mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+<section class="hero-unit jumbotron callout large">
+<div class="row mdl-grid">
+	<div class="large-12 small-12 columns col-sm-12 mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+		<h1>Welcome to Rindow</h1>
+		<p>Congratulations! You have successfully installed the Rindow Web Application Skeleton.</p>
+	</div>
+</div>
+</section>
+</div><!--class="col-12"-->
+</div><!--class="row"-->
+<div role="main">
+<div class="row grid-x grid-margin-x mdl-grid">
+    <div class="col-lg-4 col-sm-12 columns cell small-12 medium-12 large-4 mdl-card mdl-cell mdl-cell--4-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+        <div class="card">
+        <div class="card-body">
+        <div class="card-title card-divider mdl-card__title mdl-card--expand">
+            <h3 class="mdl-card__title-text">Description of Rindow</h3>
+        </div>
+        <p class="card-text card-section mdl-card__supporting-text">
+        	Rindow Framework is a PHP Application Framework that provides a modern programming and configuration model to all PHP programmers.
+        	Please read the README.md on the github.
+        </p>
+        <div class="card-section mdl-card__actions mdl-card--border">
+            <a class="button tiny radius btn btn-sm btn-color gradient-blue mdl-button" href="https://rindow.github.io/framework">Go github &raquo;</a>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-12 columns cell small-12 medium-12 large-4 mdl-card mdl-cell mdl-cell--4-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+        <div class="card">
+        <div class="card-body">
+        <div class="card-divider mdl-card__title mdl-card--expand">
+            <h3 class="mdl-card__title-text">Quick Demo</h3>
+        </div>
+        <div class="card-section mdl-card__supporting-text">
+            <p>
+                This demo is including how to write a mvc controller with the annotation.
+            </p>
+            <?php if(isset($color)) : ?>
+    		<div>
+    			<span style="display:inline;vertical-align:middle;">Clicked</span> <span class="button tiny radius btn btn-sm btn-color gradient-<?= $this->escape(strtolower($color)) ?> mdl-button"><?= $this->escape($color) ?></span>
+    		</div>
+    		<?php endif ?>
+        </div>
+        <div class="card-section mdl-card__actions mdl-card--border">
+            <span style="display:inline;vertical-align:middle;">Click following:</span>
+			<a style="display:inline;vertical-align:middle;" href="<?= $this->url()->fromRoute('color',array('color'=>'Red')) ?>" class="button tiny radius btn btn-sm btn-color gradient-red mdl-button">Red</a>
+			<a style="display:inline;vertical-align:middle;" href="<?= $this->url()->fromRoute('color',array('color'=>'Green')) ?>" class="button tiny radius btn btn-sm btn-color gradient-green mdl-button">Green</a>
+			<a style="display:inline;vertical-align:middle;" href="<?= $this->url()->fromRoute('color',array('color'=>'Blue')) ?>" class="button tiny radius btn btn-sm btn-color gradient-blue mdl-button">Blue</a>
+		</div>
+        </div>
+        </div>
+	</div>
+    <div class="col-lg-4 col-sm-12 columns cell small-12 medium-12 large-4 mdl-card mdl-cell mdl-cell--4-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+        <div class="card">
+        <div class="card-body">
+        <div class="card-divider mdl-card__title mdl-card--expand">
+            <h3 class="mdl-card__title-text">Form Demo</h3>
+        </div>
+        <p class="card-section mdl-card__supporting-text">
+            It is "Form" and "Database" demo with annotated entities.
+            This demo is including how to use annotation driven "Dependency Injection" and "Form Builder" and "Declarative Transaction".
+        </p>
+        <div class="card-section mdl-card__actions mdl-card--border">
+		    <a class="button tiny radius btn btn-sm btn-color gradient-blue mdl-button" href="<?= $this->url()->fromRoute('product') ?>">Start &raquo;</a>
+        </div>
+        </div>
+        </div>
+	</div>
+</div><!--class="row"-->
+</div><!--role="main"-->
+</div><!--class="container"-->

@@ -1,0 +1,24 @@
+{if empty($max)}{assign var='max' value=5}{/if}{assign var='dummy' value=$paginator->setItemMaxPerPage($max)}
+{if empty($scrolling)}{assign var='scrolling' value='jumping'}{/if}{assign var='dummy' value=$paginator->setPageScrollingStyle($scrolling)}
+{if empty($range)}{assign var='range' value=5}{/if}{assign var='dummy' value=$paginator->setPageRangeSize($range)}
+<div class="mdl-grid">
+<div style="margin-left:auto">
+{foreach $paginator->getPagesInRange() as $page}
+    <a href="{url name=$route options=['query'=>array_merge($query,['page'=>$page])]}" style="text-decoration:none;{if $paginator->getPage()==$page} pointer-events: none;{/if}"{if $paginator->getPage()==$page} disabled{/if}>
+	<button class="mdl-button mdl-js-button mdl-button--icon"{if $paginator->getPage()==$page} disabled{/if}>
+		{$page}
+	</button>
+    </a>
+{/foreach}
+    <a href="{url name=$route options=['query'=>array_merge($query,['page'=>$paginator->getPreviousPage()])]}" style="text-decoration:none;{if $paginator->hasPreviousPage()}{else} pointer-events: none;{/if}"{if $paginator->hasPreviousPage()}{else} disabled{/if}>
+	<button class="mdl-button mdl-js-button mdl-button--icon"{if $paginator->hasPreviousPage()}{else} disabled{/if}>
+	    <i class="material-icons">navigate_before</i>
+	</button>
+    </a>
+    <a href="{url name=$route options=['query'=>array_merge($query,['page'=>$paginator->getNextPage()])]}" style="text-decoration:none;{if $paginator->hasNextPage()}{else} pointer-events: none;{/if}"{if $paginator->hasNextPage()}{else} disabled{/if}>
+	<button class="mdl-button mdl-js-button mdl-button--icon"{if $paginator->hasNextPage()}{else} disabled{/if}>
+	    <i class="material-icons">navigate_next</i>
+	</button>
+    </a>
+</div>
+</div>

@@ -1,0 +1,31 @@
+{extends file=$layout}
+
+{block name=title}{if $new}New{else}Edit{/if} Product{/block}
+
+{block name=body}
+<div class="container grid-container mdl-layout__content">
+<div class="row grid-x mdl-grid">
+<div class="col-sm-2 columns cell small-12 medium-2 large-2 mdl-cell mdl-cell--2-col">
+  {include file='partial/nav.tpl.html' title='Form Demo' nav=[
+    ['caption'=>'Product', 'route'=>$route.product ],
+    [ 'caption'=>'Category', 'route'=>$route.category ],
+    [ 'caption'=>'Protected', 'route'=>$route.protectedpage ],
+    [ 'caption'=>'Api Demo', 'route'=>$route.apidemo ],
+    [ 'caption'=>'Add New', 'route'=>$route.new ]
+  ] current=$route.new }
+</div>
+<div class="col-sm-10 columns cell small-12 medium-10 large-10 mdl-cell mdl-cell--10-col">
+<aside>
+  <div>{include file='partial/alertbox.tpl.html' messages=$flashMessages->get('notice')}</div>
+</aside>
+<h3>{if $new}New{else}Edit{/if} Product</h3>
+{if $new}
+{form_add element=$form type='submit' name='update' value='Add' label=' '}
+{else}
+{form_add element=$form type='submit' name='update' value='Update' label=' '}
+{/if}
+{form_raw element=$form}
+</div>
+</div>
+</div><!--class="container"-->
+{/block}

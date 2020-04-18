@@ -1,0 +1,32 @@
+<aside class="d-none d-sm-block hidden-xs hide-for-small-only mdl-cell--hide-tablet mdl-cell--hide-phone">
+  <h6>
+      {{ title }}
+  </h6>
+  <nav>
+    <ul class="nav flex-column nav-pills nav-stacked vertical menu side-nav mdl-list">
+      {% for link in nav %}
+      <li class="nav-item{% if link.route==current %} active{% endif %} mdl-list__item">
+        <a class="nav-link{% if link.route==current %} active{% endif %} mdl-list__item-primary-content" href="{{ url(link.route) }}">
+          <span class="{% if link.route==current %}mdl-button--primary{% endif %}">{{ link.caption }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</aside>
+<aside class="d-block d-sm-none visible-xs-block show-for-small-only mdl-cell--hide-desktop">
+  <span>
+      {{ title }}
+  </span>
+  <nav>
+    <ul class="nav nav-pills menu sub-nav mdl-navigation">
+      {% for link in nav %}
+      <li class="nav-item{% if link.route==current %} active{% endif %} mdl-button mdl-js-button">
+        <a class="nav-link{% if link.route==current %} active{% endif %}" style="text-decoration:none;" href="{{ url(link.route) }}">
+          <span class="{% if link.route==current %}mdl-button--primary{% endif %}">{{ link.caption }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</aside>

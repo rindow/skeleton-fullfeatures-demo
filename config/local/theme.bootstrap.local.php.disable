@@ -1,0 +1,31 @@
+<?php
+return [
+    'web' => [
+        'view' => [
+            'view_managers' => [
+                'default' => [
+                    'layout' => 'layout/bootstrap4',
+                    //'layout' => 'layout/bootstrap3',
+                    //'layout' => 'layout/foundation6',
+                    //'layout' => 'layout/foundation5',
+                    //'layout' => 'layout/mdl13',
+                ],
+            ],
+            'templates' => [
+                'paginator' => 'partial/paginator_bootstrap',
+                //'paginator' => 'partial/paginator_foundation',
+                //'paginator' => 'partial/paginator_mdl',
+            ]
+        ],
+        'form' => [
+            'themes' => [
+                'default'    => 'Rindow\Web\Form\View\Theme\Bootstrap4Horizontal',
+                //'default'    => 'Rindow\Web\Form\View\Theme\Bootstrap3Horizontal',
+                //'default'    => 'Rindow\Web\Form\View\Theme\Foundation6Horizontal',
+                //'default'    => 'Rindow\Web\Form\View\Theme\Foundation5Horizontal',
+                //'default'    => 'Rindow\Web\Form\View\Theme\Mdl13Horizontal',
+            ],
+            //'hidePassword' => false,
+        ],
+    ],
+];

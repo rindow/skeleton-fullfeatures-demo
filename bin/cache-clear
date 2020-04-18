@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+include __DIR__.'/../init_autoloader.php';
+
+if(file_exists(__DIR__.'/../config/webapp.config.php')) {
+    $config = require __DIR__.'/../config/webapp.config.php';
+    $cachedir = isset($config['cache']['filePath'])?$config['cache']['filePath']:null;
+} else {
+    $cachedir = null;
+}
+if($cachedir==null) {
+    $cachedir=__DIR__.'/../cache';
+}
+echo 'Cleaning:'.$cachedir.' ...';
+Rindow\Stdlib\FileUtil\Dir::factory()->clear($cachedir);

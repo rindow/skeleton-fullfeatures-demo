@@ -1,0 +1,26 @@
+{if empty($max)}{assign var='max' value=5}{/if}{assign var='dummy' value=$paginator->setItemMaxPerPage($max)}
+{if empty($scrolling)}{assign var='scrolling' value='jumping'}{/if}{assign var='dummy' value=$paginator->setPageScrollingStyle($scrolling)}
+{if empty($range)}{assign var='range' value=5}{/if}{assign var='dummy' value=$paginator->setPageRangeSize($range)}
+<div class="pagination-centered">
+<ul class="pagination">
+	<li class="arrow{if $paginator->hasPreviousPage()}{else} unavailable{/if}">
+		<a href="{url name=$route options=['query'=>array_merge($query, ['page'=>$paginator->getPreviousPage()])]}">
+			&laquo; Previous
+		</a>
+	</li>
+	<li>&hellip;</li>
+{foreach $paginator->getPagesInRange() as $page}
+	<li{if $paginator->getPage()==$page} class="current"{/if}>
+		<a href="{url name=$route options=['query'=>array_merge($query, ['page'=>$page])]}">
+			{$page}
+		</a>
+	</li>
+{/foreach}
+	<li>&hellip;</li>
+	<li class="arrow{if $paginator->hasNextPage()}{else} unavailable{/if}">
+		<a href="{url name=$route options=['query'=>array_merge($query, ['page'=>$paginator->getNextPage()])]}">
+			Next &raquo;
+		</a>
+	</li>
+</ul>
+</div>

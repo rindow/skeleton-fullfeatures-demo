@@ -1,0 +1,13 @@
+indexes:
+
+- kind: demo_categories
+  ancestor: yes
+  properties:
+  - name: name
+    direction: asc
+
+- kind: demo_products
+  ancestor: yes
+  properties:
+  - name: name
+    direction: asc

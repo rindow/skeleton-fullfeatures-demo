@@ -1,0 +1,98 @@
+<?php $this->placeholder()->set('title','Api Demo') ?>
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<div class="container grid-container mdl-layout__content">
+<div class="row grid-x mdl-grid">
+<div class="col-sm-2 columns cell small-12 medium-2 large-2 mdl-cell mdl-cell--2-col-desktop mdl-cell--2-col-tablet mdl-cell--12-col-phone">
+  <?= $this->view('partial/nav',['title'=>'Api Demo','nav'=>[
+      ['caption'=>'Form','route'=>$route['product']],
+      ['caption'=>'Protected','route'=>$route['protectedpage']],
+      ['caption'=>'Api Demo','route'=>$route['apidemo']],
+  ],'current'=>$route['apidemo']]) ?>
+</div>
+<div class="col-sm-10 columns cell small-12 medium-10 large-10 mdl-cell mdl-cell--10-col-desktop mdl-cell--10-col-tablet mdl-cell--12-col-phone">
+<h1>Api Demo with Vue.js</h1>
+<h3>Category Items</h3>
+<div id="app">
+    <input v-model="argument">
+    <button v-on:click="postItem" class="button secondary tiny radius btn btn-sm btn-primary mdl-button mdl-js-button mdl-button--raised">Create</button>
+    <p><button v-on:click="refresh" class="button secondary tiny radius btn btn-sm btn-primary mdl-button mdl-js-button mdl-button--raised">Refresh</button></p>
+    <table class="table table-hover hover mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:100%">
+    <thead>
+    	<tr>
+            <th class="mdl-data-table__cell--non-numeric">Id</th>
+            <th class="mdl-data-table__cell--non-numeric">Name</th>
+            <th class="mdl-data-table__cell--non-numeric">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr v-for="item in items">
+    		<td class="mdl-data-table__cell--non-numeric">{{ item.id }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ item.name }}</td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <button v-on:click="deleteItem(item.id)" class="button secondary tiny radius btn btn-sm btn-default mdl-button mdl-js-button mdl-button--raised">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+    <h4>Reponse</h4>
+    <p>{{ message }}</p>
+    <p>Please see the server log in log/debug.log</p>
+</div>
+</div>
+</div>
+</div><!--class="container"-->
+<script>
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Vue!',
+        argument: '',
+        items: []
+    },
+    mounted: function() {
+        axios
+        .get('http://localhost:8080/api/category')
+        .then(response => (this.message = response,this.items = response.data))
+        .catch(error => (this.message = error));
+    },
+    methods: {
+        refresh: function() {
+            this.message = 'Reloading...';
+            axios
+            .get('http://localhost:8080/api/category')
+            .then(response => (this.message = response,this.items = response.data))
+            .catch(error => (this.message = error));
+        },
+        postItem: function() {
+            this.message = 'Creation of item '+this.argument+' is in progress.';
+            axios
+            .post('http://localhost:8080/api/category', {
+                name: this.argument
+            })
+            .then(response => (
+                this.message = response
+            ))
+            .catch(error => (this.message = error));
+        },
+        putItem: function() {
+            this.message = 'Update of item '+this.argument+' is in progress.';
+            axios
+            .put('http://localhost:8080/api/category', {
+                name: this.argument
+            })
+            .then(response => (this.message = response))
+            .catch(error => (this.message = error));
+        },
+        deleteItem: function(itemId) {
+            this.message = 'Deletion of item '+itemId+' is in progress.';
+            axios
+            .delete('http://localhost:8080/api/category/'+itemId)
+            .then(response => (
+                this.message = response
+            ))
+            .catch(error => (this.message = error));
+        }
+    }
+})
+</script>

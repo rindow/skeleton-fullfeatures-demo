@@ -1,0 +1,10 @@
+<?php
+return [
+    'module_manager' => [
+        'modules' => [
+            Rindow\Web\View\Module::class      => false,
+            Rindow\Module\Twig\Module::class   => true,
+            Rindow\Module\Smarty\Module::class => false,
+        ],
+    ],
+];
