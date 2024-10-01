@@ -44,7 +44,7 @@
   </nav>
     <!-- Main Content -->
     <?= $this->displayContent($this->content) ?>
-    <script src="<?= $this->url()->prefix() ?>/assets/jquery/jquery-3.3.1.slim.min.js"></script>
+    <script src="<?= $this->url()->prefix() ?>/assets/jquery/jquery.slim.min.js"></script><!-- 3.3.1 -->
     <script src="<?= $this->url()->prefix() ?>/assets/bootstrap4/js/bootstrap.min.js"></script>
     <script>
       feather.replace()

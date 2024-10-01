@@ -55,7 +55,7 @@
     </header>
     <!-- Main Content -->
     <?= $this->displayContent($this->content) ?>
-    <script src="<?= $this->url()->prefix() ?>/js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="<?= $this->url()->prefix() ?>/js/vendor/jquery.min.js"></script><!-- 1.10 -->
     <script src="<?= $this->url()->prefix() ?>/assets/bootstrap3/js/bootstrap.min.js"></script>
     <script>
       feather.replace()
